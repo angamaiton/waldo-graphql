@@ -22,7 +22,10 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({ name: 'dist/vendors', filename: 'dist/vendors.bundle.js' }),
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '..', 'node_modules/html-webpack-template/index.ejs'),
       appMountId: 'app',
+      chunks: ['dist/vendors', 'dist/bundle'],
+      title: 'Test',
     }),
   ],
   devServer: {
