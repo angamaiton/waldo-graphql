@@ -13,37 +13,42 @@ class App extends Component {
     return (
       <div className="appContainer">
         Hello
-        <PizzaList pizzas={this.props.data.allPizzas || []} />
+        <PizzaList
+          pizzas={this.props.data.allPizzas || []}
+          refetch={this.props.data.refetch}
+          loading={this.props.data.loading}
+        />
       </div>
     );
   }
 }
 
 App.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };
 
 const allPizzasQuery = gql`
-  query allPizzas {
+  query pizzaSizes {
     pizzaSizes {
       name
-      maxToppings
     }
   }
 `;
 
+console.log(allPizzasQuery);
+
 const withQuery = graphql(allPizzasQuery)(App);
 
-const PizzaAppLinked = connect(
-  (state) => ({ filter: state.filter }),
-  (dispatch) => ({
-    setFilter(filter) {
-      dispatch({
-        type: 'SET_FILTER',
-        filter,
-      });
-    },
-  }),
-)(withQuery);
+// const PizzaAppLinked = connect(
+//   (state) => ({ filter: state.filter }),
+//   (dispatch) => ({
+//     setFilter(filter) {
+//       dispatch({
+//         type: 'SET_FILTER',
+//         filter,
+//       });
+//     },
+//   }),
+// )(withQuery);
 
-export default PizzaAppLinked;
+export default withQuery;

@@ -7,16 +7,21 @@ const vendors = require('./vendors');
 const config = {
   entry: {
     'dist/bundle': path.resolve(__dirname, '..', 'src', 'index.js'),
-    'dist/vendors': vendors
+    'dist/vendors': vendors,
   },
   output: {
     path: path.resolve(__dirname, '..', 'public'),
-    filename: 'index.bundle.js'
+    filename: 'index.bundle.js',
   },
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ }
-    ]
+      { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      },
+    ],
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'dist/vendors', filename: 'dist/vendors.bundle.js' }),
@@ -28,11 +33,6 @@ const config = {
       title: 'Test',
     }),
   ],
-  devServer: {
-    contentBase: path.join(__dirname, '..', "dist"),
-    compress: true,
-    port: 9000
-  }
 };
 
 module.exports = config;

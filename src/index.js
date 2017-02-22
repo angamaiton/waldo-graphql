@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
@@ -13,6 +11,8 @@ import App from './components/App';
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'http://core-graphql.dev.waldo.photos/pizza' }),
 });
+
+console.log(client.networkInterface);
 
 ReactDOM.render(
   <ApolloProvider client={client}>
