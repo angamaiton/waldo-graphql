@@ -13,7 +13,7 @@ const app = new WebpackDevServer(compiler, {
   stats: {
     chunks: false,
     colors: true,
-  }
+  },
 });
 
 app.listen(APP_PORT, () => { 
