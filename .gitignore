@@ -1,3 +1,6 @@
 build
 dist
 node_modules
+node_modules
+ncp-debug.log
+npm-debug.log
