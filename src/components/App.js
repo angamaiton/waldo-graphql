@@ -1,20 +1,21 @@
 import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import PizzaList from './PizzaList';
+import PizzaCart from './PizzaCart';
 
 class App extends Component {
   render() {
     return (
       <div className="appContainer">
-        Hello
         <PizzaList
           pizzas={this.props.data.pizzaSizes || []}
           refetch={this.props.data.refetch}
           loading={this.props.data.loading}
         />
+        <PizzaCart />
       </div>
     );
   }
@@ -29,22 +30,12 @@ const allPizzasQuery = gql`
     pizzaSizes {
       name
       maxToppings
+      basePrice
     }
   }
 `;
 
 const withQuery = graphql(allPizzasQuery)(App);
 
-// const PizzaAppLinked = connect(
-//   (state) => ({ filter: state.filter }),
-//   (dispatch) => ({
-//     setFilter(filter) {
-//       dispatch({
-//         type: 'SET_FILTER',
-//         filter,
-//       });
-//     },
-//   }),
-// )(withQuery);
-
 export default withQuery;
+

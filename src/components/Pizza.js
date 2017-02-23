@@ -6,10 +6,10 @@ class Pizza extends Component {
   }
   render() {
     return (
-      <li>
-        <div className="view">
-          { this.props.pizza.name }
-        </div>
+      <li id={this.props.pizza.name}>
+        <div>Pizza Size: { this.props.pizza.name }</div>     
+        <div>Max Toppings: { this.props.pizza.maxToppings }</div>
+        <div>Base Price: { this.props.pizza.basePrice }</div>
       </li>
     );
   }

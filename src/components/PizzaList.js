@@ -3,15 +3,16 @@ import Pizza from './Pizza';
 
 class PizzaList extends Component {
   renderPizzas() {
-    return this.props.pizzas.map(pizza => (<Pizza pizza={pizza}>{pizza.name}</Pizza>));
+    return this.props.pizzas.map(pizza => (<Pizza pizza={pizza} />));
   }
   render() {
     return (
-      <section>
+      <div>
+        <h3>Pizza List</h3>
         <ul className="pizzaList">
           {this.renderPizzas()}
         </ul>
-      </section>
+      </div>
     );
   }
 }

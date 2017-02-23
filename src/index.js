@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
-// import store from './store';
+import './styles/styles.css';
 
 import App from './components/App';
 
