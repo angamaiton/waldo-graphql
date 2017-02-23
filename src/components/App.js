@@ -6,15 +6,12 @@ import gql from 'graphql-tag';
 import PizzaList from './PizzaList';
 
 class App extends Component {
-  componentDidMount() {
-    console.log(this.props.data);
-  }
   render() {
     return (
       <div className="appContainer">
         Hello
         <PizzaList
-          pizzas={this.props.data.allPizzas || []}
+          pizzas={this.props.data.pizzaSizes || []}
           refetch={this.props.data.refetch}
           loading={this.props.data.loading}
         />
@@ -31,11 +28,10 @@ const allPizzasQuery = gql`
   query pizzaSizes {
     pizzaSizes {
       name
+      maxToppings
     }
   }
 `;
-
-console.log(allPizzasQuery);
 
 const withQuery = graphql(allPizzasQuery)(App);
 

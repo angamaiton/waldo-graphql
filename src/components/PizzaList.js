@@ -2,17 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import Pizza from './Pizza';
 
 class PizzaList extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
   renderPizzas() {
-    if (this.props.loading) {
-      return (<div>Loading</div>);
-    } else {
-      return this.props.pizzas.map((pizza) => {
-        <Pizza key={pizza.id} pizza={pizza} />
-      });
-    }
+    return this.props.pizzas.map(pizza => (<Pizza pizza={pizza}>{pizza.name}</Pizza>));
   }
   render() {
     return (
@@ -27,7 +18,6 @@ class PizzaList extends Component {
 
 PizzaList.propTypes = {
   pizzas: PropTypes.array,
-  loading: PropTypes.bool.isRequired,
 };
 
 export default PizzaList;
