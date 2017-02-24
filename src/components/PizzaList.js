@@ -8,7 +8,7 @@ class PizzaList extends Component {
   render() {
     return (
       <div>
-        <h3>Pizza List</h3>
+        <h4>Pizza List</h4>
         <ul className="pizzaList">
           {this.renderPizzas()}
         </ul>
